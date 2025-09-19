@@ -167,9 +167,8 @@ state_pie = px.pie(
 st.plotly_chart(state_pie, use_container_width=True)
 
 # -----------------------
-# 3) Accepted vs Rejected per State/FT (stacked)
+# 3) Accepted per State/FT (stacked)
 # -----------------------
-st.subheader("Accepted vs Rejected (KG) per State / Federal Territory")
 state_compare = (
     filtered.groupby("State/Federal Territory", as_index=False)[["Total Acceptable (KG)", "Total Rejected (KG)"]]
     .sum()
@@ -179,9 +178,10 @@ fig_compare = px.bar(
     state_compare,
     x="State/Federal Territory",
     y=["Total Acceptable (KG)", "Total Rejected (KG)"],
-    title="Accepted vs Rejected (KG) by State / Federal Territory",
+    title="Accepted (KG) by State / Federal Territory",
     barmode="stack",
 )
 st.plotly_chart(fig_compare, use_container_width=True)
 
 st.caption("Tip: Use the sidebar filters to drill into specific sites or regions.")
+
